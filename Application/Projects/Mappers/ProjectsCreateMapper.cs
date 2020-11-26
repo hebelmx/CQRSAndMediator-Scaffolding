@@ -1,16 +1,19 @@
+using AutoMapper;
+using Application;
 using Application.Domain;
 using Application.Mappings;
 using Application.ViewModels;
-using AutoMapper;
+using System;
+using Application.Projects.Responses;
+using Application.Projects.Commands;
 
-namespace Application.Logic.Projects.Mappers
+namespace Application.Projects.Mappers
 {
-    public class ProjectMappingProfile : IMapFrom<Project>
+    public class ProjectCreateMapper : IMapFrom<ProjectCreateDto>
     {
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Project, ProjectCreateDto>();
-
             profile.CreateMap<ProjectCreateDto, Project>();
         }
     }

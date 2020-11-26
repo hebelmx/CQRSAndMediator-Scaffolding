@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Domain;
 using Application.Logic.Projects.Commands;
-using Application.Persistency;
 using Application.ViewModels;
 using FakeItEasy.Sdk;
 using Microsoft.EntityFrameworkCore;

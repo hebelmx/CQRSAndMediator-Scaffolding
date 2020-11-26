@@ -4,7 +4,7 @@ using Application.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Application.Persistency
+namespace Application.Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext
     {

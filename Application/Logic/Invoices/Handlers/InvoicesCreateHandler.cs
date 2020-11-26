@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Logic.Invoices.Commands;
-using Application.Persistency;
+using Application.Persistence;
 using Application.ViewModels;
 using AutoMapper;
 using MediatR;

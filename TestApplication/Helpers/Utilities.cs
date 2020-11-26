@@ -1,4 +1,4 @@
-﻿using Application.Persistency;
+﻿using Application.Persistence;
 
 namespace TestApplication.Helpers
 {

@@ -2,7 +2,7 @@
 using Application.Infrastructure;
 using Application.Infrastructure.Tags;
 using Application.Mediator;
-using Application.Persistency;
+using Application.Persistence;
 using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;

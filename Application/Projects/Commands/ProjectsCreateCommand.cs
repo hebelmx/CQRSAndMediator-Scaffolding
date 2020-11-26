@@ -1,6 +1,6 @@
 using MediatR;
 using Application;
-using Application.DB;
+using Application.ViewModels;
 using System;
 using Application.Projects.Responses;
 using Application.Projects.Commands;

@@ -1,6 +1,6 @@
 using FluentValidation;
 using Application;
-using Application.DB;
+using Application.Domain;
 using System;
 using Application.Projects.Responses;
 using Application.Projects.Commands;

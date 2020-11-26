@@ -1,5 +1,5 @@
 ﻿using System;
-using Application.Persistency;
+using Application.Persistence;
 
 namespace Application.ViewModels
 {

@@ -1,9 +1,8 @@
 using MediatR;
 using AutoMapper;
-using Logic.Invoices.Commands;
-using Logic.Invoices.Responses;
 using Application;
-using Application.DB;
+using Application.ViewModels;
+using Application.Persistence;
 using System;
 using Application.Projects.Commands;
 using Application.Projects.Responses;
@@ -15,8 +14,14 @@ namespace Application.Projects.Handlers
 {
     public class ProjectsCreateHandler : IRequestHandler<ProjectsCreateCommand, Response<ProjectDto>>
     {
+        private IApplicationDbContext _context;
         private IMapper _mapper;
-        private IApplicationDBContext _context;
+        public ProjectsCreateHandler(IApplicationDbContext context, IMapper mapper)
+        {
+            _context = context ?? throw new ArgumentNullException(nameof(context), "context cannot be null");
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper), "mapper cannot be null");
+        }
+
         public Task<Response<ProjectDto>> Handle(ProjectsCreateCommand request, CancellationToken cancellationToken)
         {
             throw new System.NotImplementedException();

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Application.Domain;
-using Application.Persistency;
+using Application.Persistence;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
 

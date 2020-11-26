@@ -1,6 +1,5 @@
 ﻿using System;
 using Application.Domain;
-using Application.Persistency;
 using Application.ViewModels;
 using AutoMapper;
 
