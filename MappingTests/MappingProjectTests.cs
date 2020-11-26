@@ -11,16 +11,6 @@ namespace MappingTests
     public class MappingProjectTests : MappingFixture
     {
         [Fact]
-        public void Map_Should_Map_Project_To_ProjectCreateDto()
-        {
-            var entity = new Project();
-            var vm = Mapper.Map<ProjectCreateDto>(entity);
-
-            vm.ShouldNotBeNull();
-            vm.ShouldBeOfType<ProjectCreateDto>();
-        }
-
-        [Fact]
         public void Map_Should_Map_ProjectCreateDto_To_Project()
         {
             var vm = new ProjectCreateDto();
@@ -28,6 +18,16 @@ namespace MappingTests
 
             entity.ShouldNotBeNull();
             entity.ShouldBeOfType<Project>();
+        }
+
+        [Fact]
+        public void Map_Should_Map_Project_To_ProjectCreateDto()
+        {
+            var entity = new Project();
+            var vm = Mapper.Map<ProjectDto>(entity);
+
+            vm.ShouldNotBeNull();
+            vm.ShouldBeOfType<ProjectDto>();
         }
     }
 }

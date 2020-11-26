@@ -1,8 +1,12 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using Application.Infrastructure;
 using Application.Infrastructure.Tags;
 using Application.Mediator;
 using Application.Persistence;
+using Application.Projects.Commands;
+using Application.Projects.Handlers;
+using Application.ViewModels;
 using AutoMapper;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -45,6 +49,14 @@ namespace Application
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddScoped<IMediator, MediatR.Mediator>();
+
+            services
+                .AddTransient<IRequestHandler<ProjectsCreateCommand, Response<ProjectDto>>, ProjectsCreateHandler>();
+
+            services.AddMediatorHandlers(typeof(Startup).GetTypeInfo().Assembly);
+
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddHtmlTags(new TagConventions());

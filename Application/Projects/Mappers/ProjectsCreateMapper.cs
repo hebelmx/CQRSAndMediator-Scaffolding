@@ -13,8 +13,8 @@ namespace Application.Projects.Mappers
     {
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Project, ProjectCreateDto>();
             profile.CreateMap<ProjectCreateDto, Project>();
+            profile.CreateMap<Project, ProjectDto>();
         }
     }
 }
