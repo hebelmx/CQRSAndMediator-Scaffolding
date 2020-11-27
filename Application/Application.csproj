@@ -51,4 +51,12 @@
 		</PackageReference>
 		<PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
+	  <Folder Include="Projects\Store\Actions\" />
+	  <Folder Include="Projects\Store\Effects\" />
+	  <Folder Include="Projects\Store\State\" />
+	  <Folder Include="Projects\Store\Reducers\" />
+	</ItemGroup>
 </Project>

@@ -32,8 +32,7 @@ namespace TestApplication
             _checkpoint = new Checkpoint();
         }
 
-        public class TestApplicationFactory
-            : WebApplicationFactory<Startup>
+        public class TestApplicationFactory : WebApplicationFactory<Startup>
         {
             protected override void ConfigureWebHost(IWebHostBuilder builder)
             {

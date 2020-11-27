@@ -1,7 +1,12 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using System.Data.Entity.Infrastructure;
+using System.Threading;
 using System.Threading.Tasks;
 using Application.Domain;
+using ExxerProject.Persistence.Configurators.Projects;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Application.Persistence
@@ -22,6 +27,8 @@ namespace Application.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration<Project>(new ProjectTypeConfiguration(modelBuilder));
+
             modelBuilder.Entity<Project>().ToTable("Projects");
             modelBuilder.Entity<Client>().ToTable("Clients");
             modelBuilder.Entity<Budget>().ToTable("Budgets");

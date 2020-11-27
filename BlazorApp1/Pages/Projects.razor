@@ -1,0 +1,64 @@
+﻿@inherits Fluxor.Blazor.Web.Components.FluxorComponent
+
+@page "/Projects"
+@page "/"
+
+@using Client.Projects.State
+@using Client.Projects.Services
+
+@inject IState<ProjectsState> ProjectsState
+@inject ProjectsService ProjectService
+
+<h3 class="text-center mb-3">Projects</h3>
+
+@if (ProjectsState.Value.IsLoading)
+{
+    <div class="d-flex flex-row justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+}
+else if (ProjectsState.Value.HasCurrentErrors)
+{
+    <span>Whoops! Looks like an issue occurred loading Projects :(</span>
+}
+else if (!(ProjectsState.Value.CurrentProjects is null) && ProjectsState.Value.CurrentProjects.Any())
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">StartDate</th>
+                <th scope="col">IsActive</th>
+                <th scope="col">Manager Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Project in ProjectsState.Value.CurrentProjects.Take(10))
+            {
+                <tr>
+                    <td>@Project.Name</td>
+                    <td>@Project.StartDate</td>
+                    <td>@Project.IsActive</td>
+                    <td>@Project.ManagerId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        // Issue the load Projects command, if no current Projects have been loaded
+        if (ProjectsState.Value.CurrentProjects is null)
+        {
+            ProjectService.LoadProjects();
+        }
+
+        base.OnInitialized();
+    }
+
+}

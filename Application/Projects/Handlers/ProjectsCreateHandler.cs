@@ -1,6 +1,6 @@
 using MediatR;
 using AutoMapper;
-using Application;
+using Application.Domain;
 using Application.ViewModels;
 using Application.Persistence;
 using System;
@@ -9,7 +9,7 @@ using Application.Projects.Responses;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Domain;
+using Application.Projects.Dtos;
 
 namespace Application.Projects.Handlers
 {
@@ -26,10 +26,10 @@ namespace Application.Projects.Handlers
 
         public async Task<Response<ProjectDto>> Handle(ProjectsCreateCommand request, CancellationToken cancellationToken)
         {
-            var entity = _mapper.Map<ProjectCreateDto, Project>(request.Dto);
+            var entity = _mapper.Map<ProjectCreateDto, Domain.Project>(request.Dto);
             var entitiesEntry = await _context.Projects.AddIfNotExistsAsync(entity, x => x.Name == entity.Name, cancellationToken);
             var result = await _context.SaveChangesAsync(cancellationToken);
-            var entitySaved = _mapper.Map<Project, ProjectDto>(entity);
+            var entitySaved = _mapper.Map<Domain.Project, ProjectDto>(entity);
             var response = new Response<ProjectDto>(entitySaved);
             return response;
         }

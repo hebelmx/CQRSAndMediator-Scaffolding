@@ -107,8 +107,10 @@ namespace Application.Migrations
             modelBuilder.Entity("Application.Domain.Project", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("ProjectID");
+                        .HasColumnName("ProjectID")
+                        .UseIdentityColumn();
 
                     b.Property<int?>("BudgetId")
                         .HasColumnType("int");
@@ -120,8 +122,9 @@ namespace Application.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .IsRequired()
+                        .HasMaxLength(900)
+                        .HasColumnType("nvarchar(900)");
 
                     b.HasKey("Id");
 
